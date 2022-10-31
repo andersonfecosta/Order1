@@ -1,7 +1,6 @@
 package entities;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Client {
@@ -45,7 +44,8 @@ public class Client {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(name + " (" + birthDate + ") - " + email );
+        sb.append(name + " (" + fmt1.format(birthDate) + ") - " + email );
         return sb.toString();
     }
+
 }

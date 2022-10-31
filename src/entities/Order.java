@@ -2,15 +2,14 @@ package entities;
 
 import entities.enums.OrderStatus;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Order {
 
+    public static SimpleDateFormat fmt2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     private Date moment;
     private OrderStatus status;
     private Client client;
@@ -46,10 +45,6 @@ public class Order {
         this.status = status;
     }
 
-    public List<OrderItem> getItem() {
-        return item;
-    }
-
    public void addItem(OrderItem item){
         this.item.add(item);
    }
@@ -69,7 +64,7 @@ public class Order {
         StringBuilder sb = new StringBuilder();
         sb.append("ORDER SUMMARY: \n");
         sb.append("Order moment: ");
-        sb.append(moment + "\n");
+        sb.append(fmt2.format(moment) + "\n");
         sb.append("Order status: ");
         sb.append(status + "\n");
         sb.append("Client: ");

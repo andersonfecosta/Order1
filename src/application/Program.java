@@ -7,10 +7,7 @@ import entities.Product;
 import entities.enums.OrderStatus;
 
 import java.text.ParseException;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 import static entities.Client.fmt1;
@@ -26,14 +23,14 @@ public class Program {
         System.out.print("Email: ");
         String email = tec.nextLine();
         System.out.print("Birth date (DD/MM/YYYY): ");
-        String birthDate = tec.nextLine();
-        Client c1 = new Client(nameClient,email,fmt1.parse(birthDate));
+        Date birthDate = fmt1.parse(tec.nextLine());
+        Client c1 = new Client(nameClient,email,birthDate);
 
         System.out.println("Enter order data: ");
         System.out.print("Status: ");
-        String orderStatus = tec.nextLine();
-        Calendar cal = Calendar.getInstance();
-        Order order1 = new Order(cal.getTime(),OrderStatus.valueOf(orderStatus),c1);
+        OrderStatus orderStatus = OrderStatus.valueOf(tec.nextLine());
+
+        Order order1 = new Order(new Date(),orderStatus,c1);
         System.out.print("How many items to this order? ");
         int n = tec.nextInt();
         for (int i = 1; i<= n; i++){
